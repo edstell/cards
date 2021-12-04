@@ -14,7 +14,7 @@ func (s Suit) Value() int {
 
 // Card in the suit given its rank.
 func (s Suit) Card(r Rank) Card {
-	return Card(s.Value()*10 + r.Value())
+	return Card(s.Value()*13 + r.Value())
 }
 
 // Symbol representation of the suit.
