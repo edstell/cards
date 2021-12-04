@@ -23,7 +23,7 @@ func TestRank_Value(t *testing.T) {
 			expectedResult: 12,
 		},
 		{
-			description:    "assert cast uint8eger ranks have value in range",
+			description:    "assert Rank value bounded by number of ranks",
 			rank:           Rank(13),
 			expectedResult: 0,
 		},

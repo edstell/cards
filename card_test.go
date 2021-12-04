@@ -6,6 +6,107 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestCard_Value(t *testing.T) {
+	tcs := []struct {
+		description    string
+		card           Card
+		expectedResult uint8
+	}{
+		{
+			description:    "assert 'Ace of Clubs' equals '0'",
+			card:           CA,
+			expectedResult: 0,
+		},
+		{
+			description:    "assert 'King of Spades' equals '51'",
+			card:           SK,
+			expectedResult: 51,
+		},
+		{
+			description:    "assert Card value bounded by number of cards",
+			card:           Card(52),
+			expectedResult: 0,
+		},
+	}
+	for _, tc := range tcs {
+		t.Run(tc.description, func(t *testing.T) {
+			assert.Equal(t, tc.expectedResult, tc.card.Value())
+		})
+	}
+}
+
+func TestCard_Symbol(t *testing.T) {
+	tcs := []struct {
+		description    string
+		card           Card
+		expectedResult rune
+	}{
+		{
+			description:    "assert 'Ace of Clubs' symbol is '🃑'",
+			card:           CA,
+			expectedResult: '🃑',
+		},
+		{
+			description:    "assert 'King of Spades' symbol is '🂮'",
+			card:           SK,
+			expectedResult: '🂮',
+		},
+	}
+	for _, tc := range tcs {
+		t.Run(tc.description, func(t *testing.T) {
+			assert.Equal(t, tc.expectedResult, tc.card.Symbol())
+		})
+	}
+}
+
+func TestCard_Name(t *testing.T) {
+	tcs := []struct {
+		description    string
+		card           Card
+		expectedResult string
+	}{
+		{
+			description:    "assert 'Ace of Clubs' name is 'Ace of Clubs'",
+			card:           CA,
+			expectedResult: "Ace of Clubs",
+		},
+		{
+			description:    "assert 'King of Spades' name is 'King of Spades'",
+			card:           SK,
+			expectedResult: "King of Spades",
+		},
+	}
+	for _, tc := range tcs {
+		t.Run(tc.description, func(t *testing.T) {
+			assert.Equal(t, tc.expectedResult, tc.card.Name())
+		})
+	}
+}
+
+func TestCard_String(t *testing.T) {
+	tcs := []struct {
+		description    string
+		card           Card
+		expectedResult string
+	}{
+		{
+			description:    "assert 'Ace of Clubs' string is 'A♣'",
+			card:           CA,
+			expectedResult: "A♣",
+		},
+		{
+			description:    "assert 'King of Spades' name is 'K♠'",
+			card:           SK,
+			expectedResult: "K♠",
+		},
+	}
+	for _, tc := range tcs {
+		t.Run(tc.description, func(t *testing.T) {
+			assert.Equal(t, tc.expectedResult, tc.card.String())
+		})
+	}
+}
+
 func TestCard_Suit(t *testing.T) {
 	tcs := []struct {
 		description    string

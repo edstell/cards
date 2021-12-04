@@ -33,7 +33,7 @@ func TestSuit_Value(t *testing.T) {
 			expectedResult: 3,
 		},
 		{
-			description:    "assert cast uint8eger values greater than the number of suits have expected value",
+			description:    "assert Suit value bounded by number of suits",
 			suit:           Suit(4),
 			expectedResult: 0,
 		},
