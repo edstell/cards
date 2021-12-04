@@ -1,14 +1,14 @@
 package card
 
 // Rank of a card (suit independant value).
-type Rank int
+type Rank uint8
 
 // Ranks available in a standard 52-deck of French-suited playing cards.
 var Ranks = [...]Rank{Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King}
 
 // Value of the rank; bounded by the number of ranks (13).
-func (r Rank) Value() int {
-	return int(r) % len(Ranks)
+func (r Rank) Value() uint8 {
+	return uint8(r) % uint8(len(Ranks))
 }
 
 // Card with corresponding rank given its suit.

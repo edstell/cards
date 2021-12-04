@@ -1,7 +1,7 @@
 package card
 
 // Card in a standard 52-card deck of French-suited playing cards.
-type Card int
+type Card uint8
 
 // Cards available in a standard 52-card deck of French-suited playing cards.
 var Cards = [...]Card{
@@ -12,18 +12,18 @@ var Cards = [...]Card{
 }
 
 // Value of the card; bounded by the number of cards (52).
-func (c Card) Value() int {
-	return int(c) % len(Cards)
+func (c Card) Value() uint8 {
+	return uint8(c) % uint8(len(Cards))
 }
 
 // Rank of the card (suit independant value).
 func (c Card) Rank() Rank {
-	return Rank(c.Value() % len(Ranks))
+	return Rank(c.Value() % uint8(len(Ranks)))
 }
 
 // Suit of the card (rank independant value).
 func (c Card) Suit() Suit {
-	return Suit(c.Value() / len(Ranks))
+	return Suit(c.Value() / uint8(len(Ranks)))
 }
 
 // Symbol representation of the card.

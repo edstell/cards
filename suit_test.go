@@ -10,7 +10,7 @@ func TestSuit_Value(t *testing.T) {
 	tcs := []struct {
 		description    string
 		suit           Suit
-		expectedResult int
+		expectedResult uint8
 	}{
 		{
 			description:    "assert Clubs value equals '0'",
@@ -33,7 +33,7 @@ func TestSuit_Value(t *testing.T) {
 			expectedResult: 3,
 		},
 		{
-			description:    "assert cast integer values greater than the number of suits have expected value",
+			description:    "assert cast uint8eger values greater than the number of suits have expected value",
 			suit:           Suit(4),
 			expectedResult: 0,
 		},
