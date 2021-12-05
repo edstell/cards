@@ -15,7 +15,7 @@ func TestDeck_Sort(t *testing.T) {
 	}{
 		{
 			description: "assert deck is correctly sorted in descending order",
-			deck:        Cards,
+			deck:        cards,
 			less:        Desc,
 			expectedResult: Deck{
 				SK, SQ, SJ, ST, S9, S8, S7, S6, S5, S4, S3, S2, SA,
@@ -33,11 +33,11 @@ func TestDeck_Sort(t *testing.T) {
 				CK, CQ, CJ, CT, C9, C8, C7, C6, C5, C4, C3, C2, CA,
 			},
 			less:           Asc,
-			expectedResult: Cards,
+			expectedResult: cards,
 		},
 		{
 			description: "assert deck is correctly sorted in ascending rank order",
-			deck:        Cards,
+			deck:        cards,
 			less:        RankAsc,
 			expectedResult: Deck{
 				CA, DA, HA, SA,
@@ -57,7 +57,7 @@ func TestDeck_Sort(t *testing.T) {
 		},
 		{
 			description: "assert deck is correctly sorted in descending rank order",
-			deck:        Cards,
+			deck:        cards,
 			less:        RankDesc,
 			expectedResult: Deck{
 				CK, DK, HK, SK,
@@ -77,7 +77,7 @@ func TestDeck_Sort(t *testing.T) {
 		},
 		{
 			description: "assert deck is correctly sorted in descending suit order",
-			deck:        Cards,
+			deck:        cards,
 			less:        SuitDesc,
 			expectedResult: Deck{
 				SA, S2, S3, S4, S5, S6, S7, S8, S9, ST, SJ, SQ, SK,
@@ -95,7 +95,7 @@ func TestDeck_Sort(t *testing.T) {
 				CA, C2, C3, C4, C5, C6, C7, C8, C9, CT, CJ, CQ, CK,
 			},
 			less:           SuitAsc,
-			expectedResult: Cards,
+			expectedResult: cards,
 		},
 	}
 	for _, tc := range tcs {

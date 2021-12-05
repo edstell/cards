@@ -3,13 +3,9 @@ package card
 // Suit of a Card (one of ♣, ♦, ❤, ♠).
 type Suit uint8
 
-// Suits available in a standard 52-card deck of French-suited playing
-// cards (one of ♣, ♦, ❤, ♠).
-var Suits = [...]Suit{Clubs, Diamonds, Hearts, Spades}
-
 // Value of the suit; bounded by the number of suits (4).
 func (s Suit) Value() uint8 {
-	return uint8(s) % uint8(len(Suits))
+	return uint8(s) % uint8(len(suits))
 }
 
 // Card in the suit given its rank.
@@ -40,6 +36,7 @@ const (
 )
 
 var (
+	suits       = [...]Suit{Clubs, Diamonds, Hearts, Spades}
 	suitSymbols = [...]rune{'♣', '♦', '❤', '♠'}
 	suitNames   = [...]string{"Clubs", "Diamonds", "Hearts", "Spades"}
 )

@@ -3,27 +3,19 @@ package card
 // Card in a standard 52-card deck of French-suited playing cards.
 type Card uint8
 
-// Cards available in a standard 52-card deck of French-suited playing cards.
-var Cards = [...]Card{
-	CA, C2, C3, C4, C5, C6, C7, C8, C9, CT, CJ, CQ, CK,
-	DA, D2, D3, D4, D5, D6, D7, D8, D9, DT, DJ, DQ, DK,
-	HA, H2, H3, H4, H5, H6, H7, H8, H9, HT, HJ, HQ, HK,
-	SA, S2, S3, S4, S5, S6, S7, S8, S9, ST, SJ, SQ, SK,
-}
-
 // Value of the card; bounded by the number of cards (52).
 func (c Card) Value() uint8 {
-	return uint8(c) % uint8(len(Cards))
+	return uint8(c) % uint8(len(cards))
 }
 
 // Rank of the card (suit independant value).
 func (c Card) Rank() Rank {
-	return Rank(c.Value() % uint8(len(Ranks)))
+	return Rank(c.Value() % uint8(len(ranks)))
 }
 
 // Suit of the card (rank independant value).
 func (c Card) Suit() Suit {
-	return Suit(c.Value() / uint8(len(Ranks)))
+	return Suit(c.Value() / uint8(len(ranks)))
 }
 
 // Symbol representation of the card.
@@ -48,9 +40,17 @@ const (
 	SA, S2, S3, S4, S5, S6, S7, S8, S9, ST, SJ, SQ, SK = Card(39), Card(40), Card(41), Card(42), Card(43), Card(44), Card(45), Card(46), Card(47), Card(48), Card(49), Card(50), Card(51)
 )
 
-var symbols = [...]rune{
-	'🃑', '🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃝', '🃞',
-	'🃁', '🃂', '🃃', '🃄', '🃅', '🃆', '🃇', '🃈', '🃉', '🃊', '🃋', '🃍', '🃎',
-	'🂱', '🂲', '🂳', '🂴', '🂵', '🂶', '🂷', '🂸', '🂹', '🂺', '🂻', '🂽', '🂾',
-	'🂡', '🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂨', '🂩', '🂪', '🂫', '🂭', '🂮',
-}
+var (
+	cards = [...]Card{
+		CA, C2, C3, C4, C5, C6, C7, C8, C9, CT, CJ, CQ, CK,
+		DA, D2, D3, D4, D5, D6, D7, D8, D9, DT, DJ, DQ, DK,
+		HA, H2, H3, H4, H5, H6, H7, H8, H9, HT, HJ, HQ, HK,
+		SA, S2, S3, S4, S5, S6, S7, S8, S9, ST, SJ, SQ, SK,
+	}
+	symbols = [...]rune{
+		'🃑', '🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃝', '🃞',
+		'🃁', '🃂', '🃃', '🃄', '🃅', '🃆', '🃇', '🃈', '🃉', '🃊', '🃋', '🃍', '🃎',
+		'🂱', '🂲', '🂳', '🂴', '🂵', '🂶', '🂷', '🂸', '🂹', '🂺', '🂻', '🂽', '🂾',
+		'🂡', '🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂨', '🂩', '🂪', '🂫', '🂭', '🂮',
+	}
+)

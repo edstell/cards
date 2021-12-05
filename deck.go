@@ -6,7 +6,7 @@ import "sort"
 type Deck [52]Card
 
 // OrderedDeck alphabetic suit and ascenting rank order.
-var OrderedDeck = Deck(Cards)
+var OrderedDeck = Deck(cards)
 
 // Sort the Deck using the provided less function. Sorting is stable; ordering
 // of equal values is maintained.

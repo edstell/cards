@@ -3,12 +3,9 @@ package card
 // Rank of a card (suit independant value).
 type Rank uint8
 
-// Ranks available in a standard 52-deck of French-suited playing cards.
-var Ranks = [...]Rank{Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King}
-
 // Value of the rank; bounded by the number of ranks (13).
 func (r Rank) Value() uint8 {
-	return uint8(r) % uint8(len(Ranks))
+	return uint8(r) % uint8(len(ranks))
 }
 
 // Card with corresponding rank given its suit.
@@ -48,6 +45,7 @@ const (
 )
 
 var (
+	ranks       = [...]Rank{Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King}
 	rankSymbols = [...]rune{'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'}
 	rankNames   = [...]string{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"}
 )

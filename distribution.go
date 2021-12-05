@@ -11,5 +11,5 @@ var All = Distribution(func(i, count int) bool {
 
 // Equal distribution; stop dealing when largest count multiple is reached.
 var Equal = Distribution(func(i, count int) bool {
-	return (len(Cards) - i) > (len(Cards) % count)
+	return (len(OrderedDeck) - i) > (len(OrderedDeck) % count)
 })
