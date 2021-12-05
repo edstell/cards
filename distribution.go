@@ -4,8 +4,8 @@ package card
 // is met.
 type Distribution func(i int, count int) bool
 
-// Unequal distribution; deal all cards.
-var Unequal = Distribution(func(i, count int) bool {
+// All cards should be dealt, regardless of equality.
+var All = Distribution(func(i, count int) bool {
 	return true
 })
 
