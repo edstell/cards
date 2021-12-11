@@ -116,7 +116,7 @@ func TestDeck_Deal(t *testing.T) {
 	}{
 		{
 			description: "assert equal hands are dealt",
-			deck:        OrderedDeck,
+			deck:        OrderedDeck(),
 			hands:       5,
 			stop:        Equal(5),
 			assert: func(t *testing.T, hands []Hand) {
@@ -128,7 +128,7 @@ func TestDeck_Deal(t *testing.T) {
 		},
 		{
 			description: "assert requested number of cards are dealt",
-			deck:        OrderedDeck,
+			deck:        OrderedDeck(),
 			hands:       1,
 			stop:        Num(20),
 			assert: func(t *testing.T, hands []Hand) {
@@ -138,7 +138,7 @@ func TestDeck_Deal(t *testing.T) {
 		},
 		{
 			description: "assert hands are of size requested",
-			deck:        OrderedDeck,
+			deck:        OrderedDeck(),
 			hands:       3,
 			stop:        Size(3, 17),
 			assert: func(t *testing.T, hands []Hand) {

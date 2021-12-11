@@ -3,7 +3,7 @@ package card
 // Equal hands; stop when no more equal hands can be dealt.
 func Equal(hands int) func(int) bool {
 	return func(i int) bool {
-		return (len(OrderedDeck) % hands) >= (len(OrderedDeck) - i)
+		return (len(cards) % hands) >= (len(cards) - i)
 	}
 }
 
