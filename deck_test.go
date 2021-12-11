@@ -115,16 +115,6 @@ func TestDeck_Deal(t *testing.T) {
 		assert      func(*testing.T, []Hand)
 	}{
 		{
-			description: "assert all cards are dealt",
-			deck:        OrderedDeck,
-			hands:       1,
-			stop:        All,
-			assert: func(t *testing.T, hands []Hand) {
-				require.Len(t, hands, 1)
-				assert.Len(t, hands[0], 52)
-			},
-		},
-		{
 			description: "assert equal hands are dealt",
 			deck:        OrderedDeck,
 			hands:       5,

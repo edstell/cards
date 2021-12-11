@@ -1,10 +1,5 @@
 package card
 
-// All cards should be dealt; don't stop.
-func All(int) bool {
-	return false
-}
-
 // Equal hands; stop when no more equal hands can be dealt.
 func Equal(hands int) func(int) bool {
 	return func(i int) bool {

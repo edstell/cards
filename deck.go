@@ -20,7 +20,7 @@ func (d Deck) Sort(less func(a, b Card) bool) Deck {
 // Deal the deck to the number of hands.
 func (d Deck) Deal(hands int, stop func(i int) bool) []Hand {
 	out := make([]Hand, hands)
-	for i := 0; i < len(d) && !stop(i); i++ {
+	for i := 0; !stop(i); i++ {
 		out[i%hands] = append(out[i%hands], d[i])
 	}
 	return out
