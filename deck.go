@@ -17,11 +17,11 @@ func (d Deck) Sort(less func(a, b Card) bool) Deck {
 	return d
 }
 
-// Deal the deck to 'count' hands.
-func (d Deck) Deal(count int, dst Distribution) []Hand {
-	hands := make([]Hand, count)
-	for i := 0; i < len(d) && dst(i, count); i++ {
-		hands[i%count] = append(hands[i%count], d[i])
+// Deal the deck to the number of hands.
+func (d Deck) Deal(hands int, stop func(i int) bool) []Hand {
+	out := make([]Hand, hands)
+	for i := 0; i < len(d) && !stop(i); i++ {
+		out[i%hands] = append(out[i%hands], d[i])
 	}
-	return hands
+	return out
 }

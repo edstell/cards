@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestDeck_Sort(t *testing.T) {
@@ -101,6 +102,66 @@ func TestDeck_Sort(t *testing.T) {
 	for _, tc := range tcs {
 		t.Run(tc.description, func(t *testing.T) {
 			assert.Equal(t, tc.expectedResult, tc.deck.Sort(tc.less))
+		})
+	}
+}
+
+func TestDeck_Deal(t *testing.T) {
+	tcs := []struct {
+		description string
+		deck        Deck
+		hands       int
+		stop        func(int) bool
+		assert      func(*testing.T, []Hand)
+	}{
+		{
+			description: "assert all cards are dealt",
+			deck:        OrderedDeck,
+			hands:       1,
+			stop:        All,
+			assert: func(t *testing.T, hands []Hand) {
+				require.Len(t, hands, 1)
+				assert.Len(t, hands[0], 52)
+			},
+		},
+		{
+			description: "assert equal hands are dealt",
+			deck:        OrderedDeck,
+			hands:       5,
+			stop:        Equal(5),
+			assert: func(t *testing.T, hands []Hand) {
+				require.Len(t, hands, 5)
+				for _, hand := range hands {
+					assert.Len(t, hand, 10)
+				}
+			},
+		},
+		{
+			description: "assert requested number of cards are dealt",
+			deck:        OrderedDeck,
+			hands:       1,
+			stop:        Num(20),
+			assert: func(t *testing.T, hands []Hand) {
+				require.Len(t, hands, 1)
+				assert.Len(t, hands[0], 20)
+			},
+		},
+		{
+			description: "assert hands are of size requested",
+			deck:        OrderedDeck,
+			hands:       3,
+			stop:        Size(3, 17),
+			assert: func(t *testing.T, hands []Hand) {
+				require.Len(t, hands, 3)
+				for _, hand := range hands {
+					assert.Len(t, hand, 17)
+				}
+			},
+		},
+	}
+	for _, tc := range tcs {
+		t.Run(tc.description, func(t *testing.T) {
+			tc.assert(t, tc.deck.Deal(tc.hands, tc.stop))
 		})
 	}
 }
