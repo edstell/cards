@@ -3,24 +3,19 @@ package card
 // Rank of a card (suit independant value).
 type Rank int
 
-// Value of the rank; bounded by the number of ranks (13).
-func (r Rank) Value() int {
-	return int(r) % len(ranks)
-}
-
 // Card with corresponding rank given its suit.
 func (r Rank) Card(s Suit) Card {
-	return Card(s.Value()*13 + r.Value())
+	return Card(int(s)*13 + int(r))
 }
 
 // Symbol representation of the rank.
 func (r Rank) Symbol() rune {
-	return rankSymbols[r.Value()]
+	return rankSymbols[r]
 }
 
 // Name of the rank (proper noun).
 func (r Rank) Name() string {
-	return rankNames[r.Value()]
+	return rankNames[r]
 }
 
 // String representation of the rank.

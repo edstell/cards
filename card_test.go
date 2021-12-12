@@ -6,35 +6,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestCard_Value(t *testing.T) {
-	tcs := []struct {
-		description    string
-		card           Card
-		expectedResult int
-	}{
-		{
-			description:    "assert 'Ace of Clubs' equals '0'",
-			card:           CA,
-			expectedResult: 0,
-		},
-		{
-			description:    "assert 'King of Spades' equals '51'",
-			card:           SK,
-			expectedResult: 51,
-		},
-		{
-			description:    "assert Card value bounded by number of cards",
-			card:           Card(52),
-			expectedResult: 0,
-		},
-	}
-	for _, tc := range tcs {
-		t.Run(tc.description, func(t *testing.T) {
-			assert.Equal(t, tc.expectedResult, tc.card.Value())
-		})
-	}
-}
-
 func TestCard_Symbol(t *testing.T) {
 	tcs := []struct {
 		description    string

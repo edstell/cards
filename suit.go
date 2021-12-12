@@ -3,24 +3,19 @@ package card
 // Suit of a Card (one of ♣, ♦, ❤, ♠).
 type Suit int
 
-// Value of the suit; bounded by the number of suits (4).
-func (s Suit) Value() int {
-	return int(s) % len(suits)
-}
-
 // Card in the suit given its rank.
 func (s Suit) Card(r Rank) Card {
-	return Card(s.Value()*13 + r.Value())
+	return Card(int(s)*13 + int(r))
 }
 
 // Symbol representation of the suit.
 func (s Suit) Symbol() rune {
-	return suitSymbols[s.Value()]
+	return suitSymbols[s]
 }
 
 // Name of the suit (proper noun).
 func (s Suit) Name() string {
-	return suitNames[s.Value()]
+	return suitNames[s]
 }
 
 // String representation of the suit.

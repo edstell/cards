@@ -6,35 +6,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRank_Value(t *testing.T) {
-	tcs := []struct {
-		description    string
-		rank           Rank
-		expectedResult int
-	}{
-		{
-			description:    "assert Ace value equals '0'",
-			rank:           Ace,
-			expectedResult: 0,
-		},
-		{
-			description:    "assert King value equals '12'",
-			rank:           King,
-			expectedResult: 12,
-		},
-		{
-			description:    "assert Rank value bounded by number of ranks",
-			rank:           Rank(13),
-			expectedResult: 0,
-		},
-	}
-	for _, tc := range tcs {
-		t.Run(tc.description, func(t *testing.T) {
-			assert.Equal(t, tc.expectedResult, tc.rank.Value())
-		})
-	}
-}
-
 func TestRank_Card(t *testing.T) {
 	tcs := []struct {
 		description    string
