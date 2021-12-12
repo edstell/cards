@@ -1,6 +1,9 @@
 package card
 
-import "sort"
+import (
+	"math/rand"
+	"sort"
+)
 
 // Deck of 52 cards.
 type Deck [52]Card
@@ -26,4 +29,17 @@ func (d Deck) Deal(hands int, stop func(i int) bool) []Hand {
 		out[i%hands] = append(out[i%hands], d[i])
 	}
 	return out
+}
+
+// Shuffle with the math/rand algorithm.
+func (d Deck) Shuffle(r rand.Rand) Deck {
+	r.Shuffle(len(d), func(i, j int) {
+		d[i], d[j] = d[j], d[i]
+	})
+	return d
+}
+
+// ShuffleWith the provided algorithm.
+func (d Deck) ShuffleWith(alg func(Deck) Deck) Deck {
+	return alg(d)
 }
