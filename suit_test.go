@@ -10,7 +10,7 @@ func TestSuit_Value(t *testing.T) {
 	tcs := []struct {
 		description    string
 		suit           Suit
-		expectedResult uint8
+		expectedResult int
 	}{
 		{
 			description:    "assert Clubs value equals '0'",

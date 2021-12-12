@@ -10,7 +10,7 @@ func TestCard_Value(t *testing.T) {
 	tcs := []struct {
 		description    string
 		card           Card
-		expectedResult uint8
+		expectedResult int
 	}{
 		{
 			description:    "assert 'Ace of Clubs' equals '0'",

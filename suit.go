@@ -1,11 +1,11 @@
 package card
 
 // Suit of a Card (one of ♣, ♦, ❤, ♠).
-type Suit uint8
+type Suit int
 
 // Value of the suit; bounded by the number of suits (4).
-func (s Suit) Value() uint8 {
-	return uint8(s) % uint8(len(suits))
+func (s Suit) Value() int {
+	return int(s) % len(suits)
 }
 
 // Card in the suit given its rank.

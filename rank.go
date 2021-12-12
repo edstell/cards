@@ -1,11 +1,11 @@
 package card
 
 // Rank of a card (suit independant value).
-type Rank uint8
+type Rank int
 
 // Value of the rank; bounded by the number of ranks (13).
-func (r Rank) Value() uint8 {
-	return uint8(r) % uint8(len(ranks))
+func (r Rank) Value() int {
+	return int(r) % len(ranks)
 }
 
 // Card with corresponding rank given its suit.

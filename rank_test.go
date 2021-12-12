@@ -10,7 +10,7 @@ func TestRank_Value(t *testing.T) {
 	tcs := []struct {
 		description    string
 		rank           Rank
-		expectedResult uint8
+		expectedResult int
 	}{
 		{
 			description:    "assert Ace value equals '0'",

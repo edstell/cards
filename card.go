@@ -1,21 +1,21 @@
 package card
 
 // Card in a standard 52-card deck of French-suited playing cards.
-type Card uint8
+type Card int
 
 // Value of the card; bounded by the number of cards (52).
-func (c Card) Value() uint8 {
-	return uint8(c) % uint8(len(cards))
+func (c Card) Value() int {
+	return int(c) % len(cards)
 }
 
 // Rank of the card (suit independant value).
 func (c Card) Rank() Rank {
-	return Rank(c.Value() % uint8(len(ranks)))
+	return Rank(c.Value() % len(ranks))
 }
 
 // Suit of the card (rank independant value).
 func (c Card) Suit() Suit {
-	return Suit(c.Value() / uint8(len(ranks)))
+	return Suit(c.Value() / len(ranks))
 }
 
 // Symbol representation of the card.
