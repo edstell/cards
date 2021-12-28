@@ -5,7 +5,7 @@ type Card int
 
 // Parse the card string.
 func Parse(card string) (Card, error) {
-	if len(card) == 0 {
+	if len(card) < 2 {
 		return -1, ParseErr{"Parse", card, ErrSyntax}
 	}
 	rank, err := ParseRank(string(card[0]))
