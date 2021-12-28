@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestCard_Symbol(t *testing.T) {
@@ -190,4 +191,39 @@ func TestCard_Rank(t *testing.T) {
 		})
 	}
 
+}
+
+func TestParse(t *testing.T) {
+	tcs := []struct {
+		input          string
+		expectedResult Card
+	}{
+		{
+			input:          "A♣",
+			expectedResult: CA,
+		},
+		{
+			input:          "3♣",
+			expectedResult: C3,
+		},
+		{
+			input:          "J♣",
+			expectedResult: CJ,
+		},
+		{
+			input:          "Q♣",
+			expectedResult: CQ,
+		},
+		{
+			input:          "K♣",
+			expectedResult: CK,
+		},
+	}
+	for _, tc := range tcs {
+		t.Run("Parse card: "+tc.input, func(t *testing.T) {
+			card, err := Parse(tc.input)
+			require.NoError(t, err)
+			assert.Equal(t, tc.expectedResult, card)
+		})
+	}
 }

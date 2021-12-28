@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestSuit_Card(t *testing.T) {
@@ -50,9 +51,9 @@ func TestSuit_Symbol(t *testing.T) {
 			expectedResult: '♦',
 		},
 		{
-			description:    "assert Hearts.Symbol equals '❤'",
+			description:    "assert Hearts.Symbol equals '♥'",
 			suit:           Hearts,
-			expectedResult: '❤',
+			expectedResult: '♥',
 		},
 		{
 			description:    "assert Spades.Symbol equals '♠'",
@@ -118,9 +119,9 @@ func TestSuit_String(t *testing.T) {
 			expectedResult: "♦",
 		},
 		{
-			description:    `assert Hearts.String equals "❤"`,
+			description:    `assert Hearts.String equals "♥"`,
 			suit:           Hearts,
-			expectedResult: "❤",
+			expectedResult: "♥",
 		},
 		{
 			description:    `assert Spades.String equals "♠"`,
@@ -131,6 +132,37 @@ func TestSuit_String(t *testing.T) {
 	for _, tc := range tcs {
 		t.Run(tc.description, func(t *testing.T) {
 			assert.Equal(t, tc.expectedResult, tc.suit.String())
+		})
+	}
+}
+
+func TestParseSuit(t *testing.T) {
+	tcs := []struct {
+		input          string
+		expectedResult Suit
+	}{
+		{
+			input:          "♣",
+			expectedResult: Clubs,
+		},
+		{
+			input:          "♦",
+			expectedResult: Diamonds,
+		},
+		{
+			input:          "♥",
+			expectedResult: Hearts,
+		},
+		{
+			input:          "♠",
+			expectedResult: Spades,
+		},
+	}
+	for _, tc := range tcs {
+		t.Run("Parse suit: "+tc.input, func(t *testing.T) {
+			suit, err := ParseSuit(tc.input)
+			require.NoError(t, err)
+			assert.Equal(t, tc.expectedResult, suit)
 		})
 	}
 }
