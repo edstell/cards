@@ -53,3 +53,23 @@ func (h Hand) Find(card Card) (int, bool) {
 	}
 	return -1, false
 }
+
+// Remove first instance of card from hand.
+func (h Hand) Remove(card Card) Hand {
+	i, ok := h.Find(card)
+	if !ok {
+		return h
+	}
+	return append(h[:i], h[i+1:]...)
+}
+
+// RemoveAll instances of a card from a hand.
+func (h Hand) RemoveAll(card Card) Hand {
+	for {
+		i, ok := h.Find(card)
+		if !ok {
+			return h
+		}
+		h = append(h[:i], h[i+1:]...)
+	}
+}
