@@ -1,4 +1,4 @@
-module github.com/edstell/card
+module github.com/edstell/cards
 
 go 1.17
 

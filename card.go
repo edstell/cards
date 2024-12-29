@@ -1,4 +1,4 @@
-package card
+package cards
 
 // Card in a standard 52-card deck of French-suited playing cards.
 type Card int

@@ -1,4 +1,4 @@
-package card
+package cards
 
 // Desc[ending] order by card value.
 func Desc(a, b Card) bool {

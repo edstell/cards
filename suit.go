@@ -1,4 +1,4 @@
-package card
+package cards
 
 // Suit of a Card (one of ♣, ♦, ♥, ♠).
 type Suit int
