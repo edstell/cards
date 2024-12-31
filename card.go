@@ -1,20 +1,22 @@
 package cards
 
+import "math"
+
 // Card in a standard 52-card deck of French-suited playing cards.
-type Card int
+type Card uint8
 
 // Parse the card string.
 func Parse(card string) (Card, error) {
 	if len(card) < 2 {
-		return -1, ParseErr{"Parse", card, ErrSyntax}
+		return math.MaxUint8, ParseErr{"Parse", card, ErrSyntax}
 	}
 	rank, err := ParseRank(string(card[0]))
 	if err != nil {
-		return -1, err
+		return math.MaxUint8, err
 	}
 	suit, err := ParseSuit(card[1:])
 	if err != nil {
-		return -1, err
+		return math.MaxUint8, err
 	}
 	return rank.Card(suit), nil
 }

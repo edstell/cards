@@ -1,16 +1,17 @@
 package cards
 
 import (
+	"math"
 	"strconv"
 )
 
 // Rank of a card (suit independant value).
-type Rank int
+type Rank uint8
 
 // ParseRank string to a Rank.
 func ParseRank(rank string) (Rank, error) {
 	if len(rank) != 1 {
-		return -1, ParseErr{"ParseRank", rank, ErrSyntax}
+		return math.MaxUint8, ParseErr{"ParseRank", rank, ErrSyntax}
 	}
 	switch rank {
 	case "A":
@@ -26,10 +27,10 @@ func ParseRank(rank string) (Rank, error) {
 	default:
 		i, err := strconv.Atoi(rank)
 		if err != nil {
-			return -1, ParseErr{"ParseRank", rank, err}
+			return math.MaxUint8, ParseErr{"ParseRank", rank, err}
 		}
 		if i < 2 || i > 9 {
-			return -1, ParseErr{"ParseRank", rank, ErrRange}
+			return math.MaxUint8, ParseErr{"ParseRank", rank, ErrRange}
 		}
 		return Rank(i - 1), nil
 	}

@@ -1,7 +1,9 @@
 package cards
 
+import "math"
+
 // Suit of a Card (one of ♣, ♦, ♥, ♠).
-type Suit int
+type Suit uint8
 
 // ParseSuit string to a Suit.
 func ParseSuit(suit string) (Suit, error) {
@@ -15,7 +17,7 @@ func ParseSuit(suit string) (Suit, error) {
 	case "♠":
 		return Spades, nil
 	default:
-		return -1, ParseErr{"ParseSuit", suit, ErrSyntax}
+		return math.MaxUint8, ParseErr{"ParseSuit", suit, ErrSyntax}
 	}
 }
 
